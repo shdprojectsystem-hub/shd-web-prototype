@@ -1,12 +1,37 @@
-#!/bin/bash
-# DEPLOY STUB — run on local SHD workstation
-set -e
-REPO_REMOTE="git@github.com:USERNAME/shd-web-prototype.git"  # update this
-cd /path/to/SHD_Web_Prototype_Task2
-git init
-git add .
-git commit -m "chore(task2): prototype — Profile & Gateway (Task 2) with GH Actions"
-git branch -M main
-git remote add origin $REPO_REMOTE
-git push -u origin main
-echo "PUSH COMPLETE — cek repo: $REPO_REMOTE"
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build_and_upload:
+    runs-on: ubuntu-latest
+    name: Build & Upload Pages Artifact
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare artifact (static site)
+        run: |
+          echo "Preparing static files for deployment..."
+          ls -la
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './'
+
+  deploy:
+    needs: build_and_upload
+    runs-on: ubuntu-latest
+    name: Deploy to GitHub Pages
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
