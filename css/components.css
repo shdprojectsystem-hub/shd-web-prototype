@@ -1,0 +1,4 @@
+/* components overrides */
+hr{border:none;border-top:1px solid rgba(255,255,255,0.03);margin:18px 0}
+ul{margin:0;padding:0}
+ul li{list-style:disc;margin-left:18px}

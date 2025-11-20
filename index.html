@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SHD Project — Prototype (Profile & Gateway Card)</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">SHD</div>
+        <div>
+          <div style="font-weight:700">SHD Project</div>
+          <div class="muted">Pikiran Sadar, Sistem Berkembang.</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="muted" id="langLabel">Bahasa: <span id="langCurrent">ID</span></div>
+        <button class="btn" id="toggleLang">EN / ID</button>
+        <button class="btn primary" id="ctaDeploy">Login Laptop</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="profile-hero">
+          <div class="avatar" aria-hidden>IP</div>
+          <div>
+            <h1 id="profileTitle">Profil — SHD Project</h1>
+            <p id="profileLead">Sebuah pendekatan personal — menggabungkan kesadaran, sistem, dan pertumbuhan berkelanjutan. Fokus pada pembelajaran terarah dan dokumentasi yang rapih.</p>
+            <p class="muted" id="profileMeta">Core: Kelas SHD • Café SHD • FCP</p>
+          </div>
+        </div>
+
+        <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+
+        <div>
+          <h2 id="aboutHeading">Tentang</h2>
+          <p id="aboutText">SHD Project adalah sistem terintegrasi untuk pembelajaran trading dan pengembangan konten faceless. Desain ini mengutamakan keterbacaan, ritme visual, dan kesadaran penggunaan.</p>
+
+          <h2 id="valuesHeading">Nilai Inti</h2>
+          <ul style="padding-left:18px;margin:8px 0 12px">
+            <li class="muted">Sadar Dulu, Baru Profit</li>
+            <li class="muted">Refleksi Konsisten</li>
+            <li class="muted">Sistem yang Bisa Dipakai</li>
+          </ul>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="gateway">
+          <h3 id="gatewayTitle">Gateway — Quick View</h3>
+          <div class="content">
+            <p id="gatewayLead">Mobile viewer ringan: KPI, Reflections, Visual Dictionary. Mode gelap, single-column, responsive.</p>
+            <p class="muted" id="gatewayMeta">Status: Ready-to-Integrate</p>
+
+            <div style="margin-top:14px;display:flex;gap:8px">
+              <button class="btn" id="openGateway">Open Gateway</button>
+              <button class="btn primary" id="exportJson">Export JSON</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;text-align:center">
+          <small class="muted">Signature</small>
+          <div class="signature">"Pikiran Sadar, Sistem Berkembang."</div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="muted">Prototype build — Profile & Gateway Card (Task 2) • For review.</div>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
