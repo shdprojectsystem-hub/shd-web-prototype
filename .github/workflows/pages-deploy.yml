@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy SHD Web Prototype
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -10,28 +10,29 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build_and_upload:
+  build:
     runs-on: ubuntu-latest
-    name: Build & Upload Pages Artifact
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare artifact (static site)
-        run: |
-          echo "Preparing static files for deployment..."
-          ls -la
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Upload static files
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: './'
+          path: ./
 
   deploy:
-    needs: build_and_upload
+    needs: build
     runs-on: ubuntu-latest
-    name: Deploy to GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        id: deployment
+        uses: actions/deploy-pages@v4
